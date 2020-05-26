@@ -152,7 +152,11 @@ with open("./yaml/yaml_example.yaml") as y:
 
 ```python
 yaml_dict = yaml.full_load(y_read)
+print(type(yaml_dict))
+print(yaml_dict)
 
+
+>><class 'dict'>
 >>{'interface': {'name': 'GigabitEthernet2', 'description': 'Wide Area Network', 'enabled': True, 'ipv4': {'address': [{'ip': '172.16.0.2', 'netmask': '255.255.255.0'}]}}}
 
 ```
@@ -181,6 +185,10 @@ interface:
       netmask: 255.255.255.0
   name: GigabitEthernet2
 ```
+
+
+
+
 
 
 
