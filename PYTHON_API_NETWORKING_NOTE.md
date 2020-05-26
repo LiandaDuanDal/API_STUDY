@@ -10,7 +10,17 @@
 
 # 基本的数据操作
 
-## JSON
+## 0. 安装包-->工作路径
+
+```python
+Installation on Jupyter Notebook
+import sys
+!{sys.executable} -m pip install xmltodict !{sys.executable} -m pip install netmiko
+```
+
+
+
+## 1. JSON
 
 ```python
 import json
@@ -38,7 +48,7 @@ with open("./json/json_example.json") as jj:
 
 
 
-## CSV
+## 2. CSV
 
 同样地用with open操作，这个操作的好处在于他对read操作进行缩进
 
@@ -86,7 +96,91 @@ with open("./csv/csv_example.csv") as f:
 
 
 
+## 3. XML
 
+这里涉及到对操作。
+
+- parse ：
+
+  ```python
+  xmltodict.parse(x.read())
+  ```
+
+  输入read()的字符转结果，转换成字典输出。
+
+和
+
+- unparse:
+
+  ```python
+  xmltodict.unparse(xml_dic)
+  ```
+
+  输入字典，把他还原为x.read()
+
+实践：
+
+```python
+import xmltodict
+with open("./xml/xml_example.xml") as x:
+    read_xml = x.read()
+    
+with open("./xml/xml_example.xml") as x:
+    xml_dic = xmltodict.parse(x.read())
+    
+    
+xml_resume = xmltodict.unparse(xml_dic)
+print(type(xml_resume))
+>> <class 'str'>  
+```
+
+## YAML
+
+读取：
+
+```python
+import yaml
+
+with open("./yaml/yaml_example.yaml") as y:
+    y_read_str = y.read()
+    print(type(y_read_str))
+```
+
+
+
+转成字典：
+
+```python
+yaml_dict = yaml.full_load(y_read)
+
+>>{'interface': {'name': 'GigabitEthernet2', 'description': 'Wide Area Network', 'enabled': True, 'ipv4': {'address': [{'ip': '172.16.0.2', 'netmask': '255.255.255.0'}]}}}
+
+```
+
+
+
+从字典变回字符串：
+
+
+
+```python
+# revert to string from dictionary
+yaml_back_to_str = yaml.dump(yaml_dict)
+
+print(type(yaml_back_to_str))
+print(yaml_back_to_str)
+
+
+<class 'str'>
+interface:
+  description: Wide Area Network
+  enabled: true
+  ipv4:
+    address:
+    - ip: 172.16.0.2
+      netmask: 255.255.255.0
+  name: GigabitEthernet2
+```
 
 
 
