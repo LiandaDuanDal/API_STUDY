@@ -38,6 +38,56 @@ with open("./json/json_example.json") as jj:
 
 
 
+## CSV
+
+同样地用with open操作，这个操作的好处在于他对read操作进行缩进
+
+所以结束读取后会自动执行close
+
+```python
+import csv
+with open("./csv/csv_example.csv") as f:
+    read_csv = f.read()
+    
+    
+print(read_csv)
+
+>>
+"router1","10.1.0.1","New York"
+"router2","10.2.0.1","Denver"
+"router3","10.3.0.1","Austin" 
+```
+
+这个时候，由于每一行的数据的结构非常明显，有一种想法是将这个东西的每一行变成列表：
+
+需要用到：
+
+```python
+import csv
+with open("./csv/csv_example.csv") as f:
+    csv_obj = csv.reader(f)
+```
+
+这个时候注意的是这个csv.reader接受的东西并不是read返回的那一大堆乱七八糟的字符串，
+
+而是with open返回出来的对象 f。
+
+```python
+# print(type(csv_obj))
+with open("./csv/csv_example.csv") as f:
+    csv_obj = csv.reader(f)
+    
+    for line in csv_obj:
+        
+        print("router: {router}, network: {network}, location: {location}".format(router = line[0],
+                                                                                 network= line[1],
+                                                                                 location = line[2]),end = '\n')
+```
+
+
+
+
+
 
 
 
