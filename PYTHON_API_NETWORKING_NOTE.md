@@ -8,6 +8,64 @@
 
 [3] https://developer.cisco.com/learning/modules/rest-api-fundamentals
 
+# 基本的数据操作
+
+## JSON
+
+```python
+import json
+with open("./json/json_example.json") as jj:
+    json_read = jj.read()
+    print(type(json_read))
+    
+    <class 'str'>
+```
+
+此时你拿到的是一个json_read 字符串
+
+将执行read拿到的字符串编程dic的话需要用jason.loads()
+
+```python
+		json_dic = json.loads(json_read)
+  
+    print(type(json_dic))
+    print(json_dic)
+    
+<class 'dict'>
+
+{'interface': {'name': 'GigabitEthernet2', 'description': 'Wide Area Network', 'enabled': True, 'ipv4': {'address': [{'ip': '172.16.0.2', 'netmask': '255.255.255.0'}]}}}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Cisco SDN Model with APIC-EM
+
+
+
+1. Always on, public instance
+
+2. - For all DevNet users
+   - **https://SandBoxAPICEM.cisco.com**
+   - **User**: *devnetuser* **PW**: *Cisco123!*
+
+# representational state transfer (REST).
+
+
+
+
+
+
+
 
 
 # REST API Fundamentals
