@@ -16,13 +16,32 @@ Learn concepts and terminology for REST APIs, how to get started with REST APIs,
 
 
 
+### Clone and configure the APIC-EM Git repo
 
+Create a working directory. For example:
 
+```bash
+mkdir \workingdir\
+```
 
+Clone the APIC-EM sample code to your working directory. For example:
 
+```bash
+cd \workingdir\
+git clone https://github.com/CiscoDevNet/apicem-apis-with-python-sample-codes
+```
 
+After the `git clone` completes, you have the Python files used in the following labs.
 
+By default, these files are configured to send API calls to the sandboxed Cisco APIC-EM controller, as shown here:
 
+```
+APICEM_IP = "sandboxapicem.cisco.com"
+```
+
+To use a different controller, locate the `apicem_config.py` configuration file. For example: `username/workingdir/apicem-apis-with-python-sample-codes/basic-labs/apicem_config.py`
+
+Edit the `apicem_config.py` file and assign the URL or IP address of the APIC-EM controller you’ll be using to the `APICEM_IP` variable. If the controller is configured to listen on a specific port number, include the value of the port number in the URL or IP address.
 
 
 
